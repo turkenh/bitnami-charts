@@ -111,6 +111,26 @@ spec:
               value: {{ .Values.wordpressScheme | quote }}
             - name: WORDPRESS_EXTRA_WP_CONFIG_CONTENT
               value: {{ .Values.wordpressExtraConfigContent | quote }}
+            {{- if .Values.externalDatabase.create }}
+            - name: MARIADB_ROOT_USER
+              value: {{ include "wordpress.databaseUser" . | quote }}
+            - name: MARIADB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "wordpress.databaseSecretName" . }}
+                  key: mariadb-password
+            - name: MYSQL_CLIENT_CREATE_DATABASE_NAME
+              value: {{ include "wordpress.databaseName" . | quote }}
+            - name: MYSQL_CLIENT_CREATE_DATABASE_USER
+              value: {{ include "wordpress.databaseUser" . | quote }}
+            - name: MYSQL_CLIENT_CREATE_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "wordpress.databaseSecretName" . }}
+                  key: mariadb-password
+            - name: MYSQL_CLIENT_CREATE_DATABASE_PRIVILEGES
+              value: {{ .Values.externalDatabase.privileges | quote }}
+            {{- end }}
             {{- if .Values.smtpHost }}
             - name: SMTP_HOST
               value: {{ .Values.smtpHost | quote }}
