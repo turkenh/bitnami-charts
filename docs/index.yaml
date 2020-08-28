@@ -1,0 +1,30 @@
+apiVersion: v1
+entries:
+  wordpress:
+  - annotations:
+      category: CMS
+    apiVersion: v1
+    appVersion: 5.5.0
+    created: "2020-08-28T17:56:42.675763+03:00"
+    description: Web publishing platform for building blogs and websites.
+    digest: 499f59651494aa9bc5d0a8e6cf34e451016c00bba0ab3211531fe72363b92f5b
+    home: http://www.wordpress.com/
+    icon: https://bitnami.com/assets/stacks/wordpress/img/wordpress-stack-220x234.png
+    keywords:
+    - wordpress
+    - cms
+    - blog
+    - http
+    - web
+    - application
+    - php
+    maintainers:
+    - email: containers@bitnami.com
+      name: Bitnami
+    name: wordpress
+    sources:
+    - https://github.com/bitnami/bitnami-docker-wordpress
+    urls:
+    - wordpress/wordpress-9.5.1.tgz
+    version: 9.5.1
+generated: "2020-08-28T17:56:42.659075+03:00"
